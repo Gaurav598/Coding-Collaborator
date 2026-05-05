@@ -1010,39 +1010,15 @@ function EditorPage() {
     setOutput("Running...");
 
     try {
-      const language = languages.find((lang) => lang.value === selectedLanguage);
-      const requestPayload = {
-        source_code: btoa(codeRef.current),
-        language_id: language.judge0Id,
-        stdin: btoa(input),
-      };
-
-      const response = await axios.post(
-        `${process.env.REACT_APP_JUDGE0_HOST}/submissions?base64_encoded=true&wait=true`,
-        requestPayload,
-        {
-          headers: {
-            "x-rapidapi-key": process.env.REACT_APP_JUDGE0_API_KEY,
-            "x-rapidapi-host": "judge0-ce.p.rapidapi.com",
-            "content-type": "application/json",
-          },
-        }
-      );
-
-      const { stdout, stderr, compile_output, message, status } = response.data;
-      if (status.id === 3) {
-        setOutput(stdout ? atob(stdout) : "No output");
-      } else {
-        setOutput(
-          (stderr ? atob(stderr) : "") ||
-          (compile_output ? atob(compile_output) : "") ||
-          (message ? atob(message) : "") ||
-          "Unknown error"
-        );
-      }
+      // User plans to build their own Docker-based compiler later.
+      // Simulating a delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setOutput("Compiler Feature is currently under development!\n\nBuilding a custom Dockerized execution engine soon...\nStay tuned!");
+      toast.success("Compiler is being built!");
     } catch (error) {
       setOutput(`Error: ${error.message || "Failed to execute code"}`);
-      toast.error(`Failed to execute code: ${error.message || "Unknown error"}`);
+      toast.error(`Failed to execute code`);
     } finally {
       setIsRunning(false);
     }
