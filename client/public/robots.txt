@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://coding-collaborator-ai-compiler.vercel.app/sitemap.xml

@@ -1,0 +1,15 @@
+{
+  "name": "codefuse",
+  "version": "1.0.0",
+  "description": "Realtime code collab",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "aditya raj",
+  "license": "MIT",
+  "dependencies": {
+    "codefuse": "file:",
+    "firebase": "^11.8.0"
+  }
+}

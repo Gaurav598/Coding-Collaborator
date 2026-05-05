@@ -1,0 +1,258 @@
+/* Editor.css */
+
+.CodeMirror {
+    font-family: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: #f8f8f2 !important;  /* brighter Dracula/vampire text */
+    background-color: #5a5a7c !important;  /* custom dark-vampire-like background */
+    line-height: 1.5;
+}
+
+/* Optional: Cursor color */
+.CodeMirror-cursor {
+    border-left: 2px solid #ff79c6 !important;
+}
+
+/* Selection */
+.CodeMirror-selected {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Gutter (line number panel) */
+.CodeMirror-gutters {
+    background-color: #8282ae;
+    color: #6272a4;
+    border-right: 1px solid #44475a;
+}
+
+/* Brighter line numbers */
+.CodeMirror-linenumber {
+    color: #bd93f9;
+}
+
+.vampire-sidebar {
+    background-color: #212529; /* Dark background */
+    color: #ffffff; /* Ensure text is visible */
+    padding: 10px;
+}
+
+.client-list {
+    list-style: none;
+    padding: 0;
+}
+
+.client-item {
+    color: #ffffff; /* Ensure text in client items is white */
+    padding: 5px;
+}
+
+.client-item small {
+    color: #ffffff; /* Specifically for email */
+}
+
+.client-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background-color: #f0f0f0; /* Placeholder for loading/failure */
+    object-fit: cover;
+    margin-right: 10px;
+    display: block; /* Ensure image is visible */
+}
+
+
+
+
+/* Container for the suggestion box */
+.suggestion-box {
+  position: absolute; /* Position it relative to the editor */
+  background: #2c3130; /* Dark background like VS Code */
+  border: 1px solid #3c3c3c; /* Subtle gray border */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(137, 129, 129, 0.5); /* Soft shadow */
+  max-height: 200px; /* Limit height, scroll if needed */
+  overflow-y: auto; /* Enable scrolling */
+  padding: 0; /* No padding on the container */
+  font-family: 'Segoe UI', 'Fira Code', monospace; /* VS Code-like font */
+  color: #d4d4d4; /* Light text color */
+}
+
+/* Each suggestion item */
+.suggestion-item {
+  padding: 6px 12px; /* Spacing inside items */
+  cursor: pointer; /* Hand cursor on hover */
+  transition: background 0.1s ease; /* Smooth hover effect */
+}
+
+/* Hover effect */
+.suggestion-item:hover {
+  background: #264f78; /* Blue highlight like VS Code */
+}
+
+/* Selected item */
+.suggestion-item.selected {
+  background: #094771; /* Darker blue for selection */
+  color: #ffffff; /* White text for contrast */
+}
+
+/* Separator between items */
+.suggestion-item:not(:last-child) {
+  border-bottom: 1px solid #3c3c3c; /* Subtle divider */
+}
+
+
+/* Editor.css */
+
+/* Existing styles remain unchanged, adding new styles below */
+
+.language-selector {
+  background-color: #1e1e1e; /* Dark background like VS Code */
+  color: #d4d4d4; /* Light text */
+  border: 1px solid #3c3c3c;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: 'Segoe UI', 'Fira Code', monospace;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.language-selector:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.btn-run {
+  background-color: #28a745; /* Green like VS Code run button */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: 'Segoe UI', 'Fira Code', monospace;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-run:hover {
+  background-color: #218838;
+}
+
+.btn-run:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.output-panel {
+  background-color: #1e1e1e; /* Dark background like VS Code terminal */
+  color: #d4d4d4; /* Light text */
+  border-top: 1px solid #3c3c3c;
+  padding: 10px;
+  height: 200px; /* Fixed height for output panel */
+  overflow-y: auto; /* Scrollable */
+  margin-top: 10px;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+.output-panel h5 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.output-panel pre {
+  margin: 0;
+  white-space: pre-wrap; /* Wrap long lines */
+  font-size: 14px;
+}
+
+
+.vampire-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.editor-container {
+  flex: 1;
+  overflow: auto;
+}
+
+.io-panel {
+  display: flex;
+  justify-content: space-between;
+  background-color: #282a36;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.input-panel, .output-panel {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.input-panel textarea {
+  width: 100%;
+  height: 100px;
+  background-color: #282a36;
+  color: white;
+  border: 1px solid #444;
+  padding: 10px;
+  resize: none;
+}
+
+.output-panel pre {
+  background-color: #282a36;
+  color: white;
+  padding: 10px;
+  border: 1px solid #444;
+  height: 100px;
+  overflow-y: auto;
+  margin: 0;
+}
+.vampire-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.editor-container {
+  flex: 1;
+  overflow: auto;
+}
+
+.io-panel {
+  display: flex;
+  justify-content: space-between;
+  background-color: #282a36;
+  padding: 10px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+  border: 1px solid #344064; /* Add border around input and output boxes */
+  border-radius: px; /* Optional: rounded corners */
+}
+
+.input-panel, .output-panel {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.input-panel textarea {
+  width: 100%;
+  height: 100px;
+  background-color: #282a36;
+  color: white;
+  border: 10px solid #444;
+  padding: 10px;
+  resize: none;
+}
+
+.output-panel pre {
+  background-color: #282a36;
+  color: white;
+  padding: 10px;
+  border: 1px solid #444;
+  height: 100px;
+  overflow-y: auto;
+  margin: 0;
+}
+
+

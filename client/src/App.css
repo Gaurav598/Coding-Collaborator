@@ -1,0 +1,204 @@
+.codemirror {
+    min-height: calc(100vh - 20px);
+    font-size: 20px;
+    line-height: 1.6;
+    padding-top: 20px;
+}
+
+.email-text {
+    color: #ccf3ff; /* from new theme */
+    font-size: 0.8rem;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'JetBrains Mono', monospace; /* changed font */
+}
+
+.vampire-theme-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* full viewport height */
+    background: radial-gradient(circle at top left, #00040f, #001f3f, #001524); /* new background */
+    color: #ccf3ff; /* light cyan text */
+    user-select: none;
+}
+
+
+/* Navbar */
+.vampire-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 10, 25, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid #00ffd0;
+    box-shadow: 0 0 20px #00ffd080;
+    user-select: none;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navbar-logo {
+    width: 38px;
+    height: 38px;
+    filter: drop-shadow(0 0 8px #00ffe1);
+}
+
+.navbar-title {
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: #00ffe1;
+    text-shadow: 0 0 8px #00f6ff;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #ccf3ff;
+}
+
+.room-id code {
+    background: #001e33;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #00eaff;
+    font-weight: 700;
+}
+
+/* Buttons */
+.btn {
+    cursor: pointer;
+    border: none;
+    padding: 6px 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.2s ease;
+    font-family: inherit;
+    color: white;
+    background: linear-gradient(135deg, #00eaff, #0088ff);
+    box-shadow: 0 0 14px #00d0ff88;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #00ffff, #00a6ff);
+    box-shadow: 0 0 20px #00eaff;
+}
+
+.btn-copy {
+    background: linear-gradient(135deg, #00ffa1, #00ffdc);
+}
+
+.btn-copy:hover {
+    background: linear-gradient(135deg, #2afff0, #00ffc3);
+    box-shadow: 0 0 15px #00ffd9;
+}
+
+.btn-leave {
+    background: linear-gradient(135deg, #ff4e50, #fc913a);
+}
+
+.btn-leave:hover {
+    background: linear-gradient(135deg, #ff6b81, #fca543);
+    box-shadow: 0 0 14px #ffadad;
+}
+
+button, .btn, .btn-copy, .btn-leave {
+    color: white !important;
+}
+
+/* Main container */
+.vampire-main {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.vampire-sidebar {
+    width: 280px;
+    background: rgba(0, 15, 30, 0.95);
+    backdrop-filter: blur(6px);
+    border-right: 1px solid #00b7ff;
+    display: flex;
+    flex-direction: column;
+    color: #c0f7ff;
+    user-select: text;
+    box-shadow: inset 0 0 14px #00eaff88;
+}
+
+.sidebar-header {
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #00ffe5;
+    text-align: center;
+    border-bottom: 1px solid #00ffd0;
+    text-shadow: 0 0 6px #00fff0;
+}
+
+.client-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.client-item {
+    padding: 1rem;
+    border-bottom: 1px solid #00c9ff33;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    color: #cafbff;
+}
+
+.client-item:hover {
+    background: rgba(0, 255, 255, 0.05);
+    box-shadow: inset 0 0 8px #00faff;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Editor panel */
+.vampire-editor {
+    flex-grow: 1;
+    background: #000d1a;
+    padding: 1rem;
+    overflow: auto;
+    border-left: 1px solid #0088ff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    color: #ccf3ff;
+    box-shadow: inset 0 0 15px #00d4ffcc;
+}
+
+/* Scrollbar customization */
+.vampire-sidebar::-webkit-scrollbar,
+.vampire-editor::-webkit-scrollbar {
+    width: 8px;
+}
+
+.vampire-sidebar::-webkit-scrollbar-thumb,
+.vampire-editor::-webkit-scrollbar-thumb {
+    background: #00eaff99;
+    border-radius: 8px;
+}
+
+.vampire-sidebar::-webkit-scrollbar-track,
+.vampire-editor::-webkit-scrollbar-track {
+    background: transparent;
+}
