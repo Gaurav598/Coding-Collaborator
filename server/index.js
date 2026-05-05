@@ -11,7 +11,8 @@ const server = http.createServer(app);
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://coding-collaborator-ai-compiler.vercel.app" // No trailing slash
+  "https://coding-collaborator.vercel.app",
+  "https://coding-collaborator-ai-compiler.vercel.app"
 ];
 
 // CORS configuration
