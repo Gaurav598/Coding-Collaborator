@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import Client from "./Client";
 import Editor from "./Editor";
 import { initSocket } from "../Socket";
@@ -50,7 +50,7 @@ function EditorPage() {
     };
   };
 
-  const debouncedSetClients = useCallback(debounce(setClients, 100), []);
+  const debouncedSetClients = useMemo(() => debounce(setClients, 100), []);
 
   useEffect(() => {
     const auth = getAuth();
@@ -154,7 +154,7 @@ function EditorPage() {
       };
 
       const response = await axios.post(
-        "http://3.109.217.132:2000/api/v2/execute",
+        `${process.env.REACT_APP_BACKEND_URL}/api/execute`,
         requestPayload
       );
 
@@ -166,7 +166,7 @@ function EditorPage() {
     } catch (error) {
       console.error("Execution error:", error);
       const errorMsg = error.response?.data?.message || error.message;
-      setOutput(`Error: ${errorMsg}\n\nNote: Public Piston API might be whitelist-only. Ensure you have access or host your own Piston instance.`);
+      setOutput(`Error: ${errorMsg}`);
       toast.error(`Failed to execute code`);
     } finally {
       setIsRunning(false);
@@ -550,7 +550,7 @@ function EditorPage() {
         </div>
       )}
 
-      <style jsx>{`
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap');
 
         .vampire-theme-container {

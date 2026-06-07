@@ -43,7 +43,7 @@ function Editor({ socketRef, roomId, onCodeChange, selectedLanguage, codeRef }) 
 
   const fetchSuggestions = async (code, cursorPos) => {
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
       const prompt = `You are a highly intelligent and language-aware code completion assistant. Your task is to first accurately identify the programming language from the code block based on syntax, structure, and keywords. Then, based on the cursor position, predict the most logical next part or line of code. Use your understanding of the language’s grammar, functions, and common patterns to generate accurate completions.
 
 Provide up to 7 concise code completions or suggestions. These can include keywords, complete lines, function names with inferred logic, or short code blocks — always syntactically correct and appropriate to the context. Only respond with a JSON array of these suggestions.
@@ -89,7 +89,6 @@ Cursor at line ${cursorPos.line + 1}, column ${cursorPos.ch}.`;
   ).current;
 
   const updateSuggestionPosition = (editor) => {
-    const cursor = editor.getCursor();
     const coords = editor.cursorCoords(true, "local");
     const editorWrapper = editor.getWrapperElement();
     const editorBounds = editorWrapper.getBoundingClientRect();
@@ -233,6 +232,7 @@ Cursor at line ${cursorPos.line + 1}, column ${cursorPos.ch}.`;
         console.log("Editor cleaned up for textarea:", textareaId);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roomId, socketRef, onCodeChange, selectedLanguage, codeRef]);
 
   useEffect(() => {
@@ -241,6 +241,7 @@ Cursor at line ${cursorPos.line + 1}, column ${cursorPos.ch}.`;
       editorRef.current.setOption("mode", languageModes[selectedLanguage] || languageModes.javascript);
       editorRef.current.setValue(currentCode);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedLanguage]);
 
   useEffect(() => {
@@ -264,12 +265,13 @@ Cursor at line ${cursorPos.line + 1}, column ${cursorPos.ch}.`;
       }
     };
 
-    socketRef.current.on(ACTIONS.CODE_CHANGE, handleCodeChange);
+    const socket = socketRef.current;
+    socket.on(ACTIONS.CODE_CHANGE, handleCodeChange);
     console.log("Registered CODE_CHANGE listener for room:", roomId);
 
     return () => {
-      if (socketRef.current) {
-        socketRef.current.off(ACTIONS.CODE_CHANGE, handleCodeChange);
+      if (socket) {
+        socket.off(ACTIONS.CODE_CHANGE, handleCodeChange);
         console.log("Unregistered CODE_CHANGE listener for room:", roomId);
       }
     };

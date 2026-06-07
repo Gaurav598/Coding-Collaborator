@@ -5,6 +5,7 @@ const { Server } = require("socket.io");
 const cors = require("cors");
 const { MongoClient, ObjectId } = require("mongodb");
 const ACTIONS = require("./Actions");
+const axios = require("axios");
 
 const app = express();
 const server = http.createServer(app);
@@ -249,6 +250,16 @@ app.delete("/api/delete-code/:id", async (req, res) => {
   }
 });
 
+app.post("/api/execute", async (req, res) => {
+  try {
+    const response = await axios.post("http://3.109.217.132:2000/api/v2/execute", req.body);
+    res.json(response.data);
+  } catch (error) {
+    console.error("Compiler API Error:", error?.response?.data || error.message);
+    res.status(500).json(error?.response?.data || { message: "Execution failed" });
+  }
+});
+
 // Global error handler
 app.use((err, req, res, next) => {
   console.error("Server error:", err.stack);
@@ -259,8 +270,6 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
 
 //self polling code to avoid cold start
-
-const axios = require("axios");
 
 const SELF_PING_INTERVAL = 10 * 60 * 1000; // 10 minutes
 const SELF_URL = "https://coding-collaborator-ai-compiler.onrender.com/health";
