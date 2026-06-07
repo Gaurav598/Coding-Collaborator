@@ -1,5 +1,5 @@
 
-Deployed Link:    https://coding-collaborator-ai-compiler.vercel.app
+Deployed Link:    https://coding-collaborator.vercel.app/
 ## Video Demonstration:
 
 https://github.com/user-attachments/assets/110a9a26-f3f9-4a18-9510-8b096f7e03ab
