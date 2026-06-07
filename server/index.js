@@ -252,7 +252,11 @@ app.delete("/api/delete-code/:id", async (req, res) => {
 
 app.post("/api/execute", async (req, res) => {
   try {
-    const response = await axios.post("http://3.109.217.132:2000/api/v2/execute", req.body);
+    const compilerUrl = process.env.COMPILER_URL;
+    if (!compilerUrl) {
+      throw new Error("Compiler URL is not configured");
+    }
+    const response = await axios.post(compilerUrl, req.body);
     res.json(response.data);
   } catch (error) {
     console.error("Compiler API Error:", error?.response?.data || error.message);
